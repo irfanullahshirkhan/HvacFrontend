@@ -1,5 +1,29 @@
 import Image from "next/image";
 
+// Add generateStaticParams function
+export async function generateStaticParams() {
+  return [
+    {
+      slug: "home-hvac-solution",
+    },
+    {
+      slug: "office-hvac-solution",
+    },
+    {
+      slug: "shop-hvac-solution",
+    },
+    {
+      slug: "healthcare-hvac-solution",
+    },
+    {
+      slug: "restaurant-hvac-solution",
+    },
+    {
+      slug: "school-hvac-solution",
+    },
+  ];
+}
+
 const project = {
   title: "Office HVAC Solution",
   subtitle: "Our Project",

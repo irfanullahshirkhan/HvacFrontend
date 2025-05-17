@@ -6,31 +6,37 @@ const projects = [
     title: "Home HVAC Solution",
     img: "/images/projects/1.jpg",
     location: "New York, USA",
+    slug: "home-hvac-solution",
   },
   {
     title: "Office HVAC Solution",
     img: "/images/projects/2.jpg",
     location: "New York, USA",
+    slug: "office-hvac-solution",
   },
   {
     title: "Shop HVAC Solution",
     img: "/images/projects/3.jpg",
     location: "New York, USA",
+    slug: "shop-hvac-solution",
   },
   {
     title: "Healthcare HVAC Solution",
     img: "/images/projects/4.jpg",
     location: "New York, USA",
+    slug: "healthcare-hvac-solution",
   },
   {
     title: "Restaurant HVAC Solution",
     img: "/images/projects/5.jpg",
     location: "New York, USA",
+    slug: "restaurant-hvac-solution",
   },
   {
     title: "School HVAC Solution",
     img: "/images/projects/6.jpg",
     location: "New York, USA",
+    slug: "school-hvac-solution",
   },
 ];
 

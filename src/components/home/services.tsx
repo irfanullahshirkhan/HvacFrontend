@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import Link from "next/link";
 
 const services = [
   {
@@ -8,7 +10,7 @@ const services = [
     img: "/images/img/pic5.jpg",
     bg: "bg-blue-50",
     btn: "bg-gray-200 text-blue-900 hover:bg-blue-100",
-    link: "/installation",
+    slug: "installation",
   },
   {
     title: "Repair",
@@ -17,7 +19,7 @@ const services = [
     img: "/images/img/pic7.jpg",
     bg: "bg-blue-400 text-white",
     btn: "bg-white text-blue-900 hover:bg-blue-100",
-    link: "/repair",
+    slug: "repair",
   },
   {
     title: "Installation",
@@ -26,7 +28,7 @@ const services = [
     img: "/images/img/pic18.jpg",
     bg: "bg-blue-50",
     btn: "bg-gray-200 text-blue-900 hover:bg-blue-100",
-    link: "/installation",
+    slug: "installation",
   },
   {
     title: "Repair",
@@ -35,7 +37,7 @@ const services = [
     img: "/images/img/pic19.jpg",
     bg: "bg-blue-400 text-white",
     btn: "bg-white text-blue-900 hover:bg-blue-100",
-    link: "/repair",
+    slug: "repair",
   },
   {
     title: "Maintenance",
@@ -44,7 +46,7 @@ const services = [
     img: "/images/img/pic21.jpg",
     bg: "bg-blue-800 text-white",
     btn: "bg-white text-blue-900 hover:bg-blue-100",
-    link: "/maintenance",
+    slug: "maintenance",
   },
   {
     title: "Installation",
@@ -53,7 +55,7 @@ const services = [
     img: "/images/img/pic22.jpg",
     bg: "bg-blue-50",
     btn: "bg-gray-200 text-blue-900 hover:bg-blue-100",
-    link: "/installation",
+    slug: "installation",
   },
 ];
 
@@ -76,7 +78,7 @@ export default function Services() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, idx) => (
             <div
-              key={service.title}
+              key={idx}
               className={`rounded-2xl overflow-hidden shadow-lg flex flex-col h-full ${service.bg}`}
             >
               <div className="relative">
@@ -103,12 +105,12 @@ export default function Services() {
                   </h4>
                   <p className="mb-6 text-base opacity-80">{service.desc}</p>
                 </div>
-                <a
-                  href={service.link}
+                <Link
+                  href={`/services/${service.slug}`}
                   className={`inline-block px-6 py-2 rounded-lg font-semibold mt-auto transition-colors duration-200 ${service.btn}`}
                 >
                   Read more
-                </a>
+                </Link>
               </div>
             </div>
           ))}

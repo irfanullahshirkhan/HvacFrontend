@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import PriceList from "@/components/home/price-list";
 import PricePlan from "@/components/home/price-plan";
 import {
@@ -31,42 +31,49 @@ const services = [
     title: "Service & Repairs",
     desc: "Air Conditioning Heating Installation & Replace HVAC Geothermal Indoor ...",
     img: "/images/img/pic4.jpg",
+    slug: "service-repairs",
   },
   {
     key: "iaq",
     title: "Indoor Air Quality",
     desc: "Air Conditioning Heating Installation & Replace HVAC Geothermal Indoor ...",
     img: "/images/img/pic6.jpg",
+    slug: "indoor-air-quality",
   },
   {
     key: "geothermal",
     title: "Geothermal",
     desc: "Air Conditioning Heating Installation & Replace HVAC Geothermal Indoor ...",
     img: "/images/img/pic7.jpg",
+    slug: "geothermal",
   },
   {
     key: "install",
     title: "Installation & Replace",
     desc: "Air Conditioning Heating Installation & Replace HVAC Geothermal Indoor ...",
     img: "/images/img/pic8.jpg",
+    slug: "installation-replace",
   },
   {
     key: "hvac",
     title: "HVAC",
     desc: "Air Conditioning Heating Installation & Replace HVAC Geothermal Indoor ...",
     img: "/images/img/pic16.jpg",
+    slug: "hvac",
   },
   {
     key: "heating",
     title: "Heating",
     desc: "Air Conditioning Heating Installation & Replace HVAC Geothermal Indoor ...",
     img: "/images/img/pic23.jpg",
+    slug: "heating",
   },
   {
     key: "ac",
     title: "Air Conditioning",
     desc: "Air Conditioning Heating Installation & Replace HVAC Geothermal Indoor ...",
     img: "/images/img/pic22.jpg",
+    slug: "air-conditioning",
   },
 ];
 
@@ -76,7 +83,6 @@ function getServicesForTab(tabKey: string) {
 }
 
 export default function ServicesPage() {
-  const router = useRouter();
   const [activeTab, setActiveTab] = useState("all");
   const tabServices = getServicesForTab(activeTab);
 
@@ -102,9 +108,9 @@ export default function ServicesPage() {
             </h1>
             <ul className="flex gap-2 text-white/80 text-sm">
               <li>
-                <a href="/" className="hover:underline">
+                <Link href="/" className="hover:underline">
                   Home
-                </a>
+                </Link>
               </li>
               <li>/</li>
               <li className="text-white">Services</li>
@@ -163,38 +169,35 @@ export default function ServicesPage() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {tabServices.map((service, idx) => (
-              <Card
+              <Link
                 key={service.title}
-                className="flex flex-col h-full shadow-lg border-t-4 border-[#29508a]"
-                onClick={() => {
-                  router.push("/services/service-231");
-                }}
+                href={`/services/${service.slug}`}
+                className="block"
               >
-                <div className="relative h-48 w-full">
-                  <Image
-                    src={service.img}
-                    alt={service.title}
-                    fill
-                    className="object-cover rounded-t-xl"
-                  />
-                </div>
-                <CardContent className="flex-1 flex flex-col justify-between py-6">
-                  <div>
-                    <CardTitle className="text-2xl font-bold mb-2 text-[#22314f]">
-                      {service.title}
-                    </CardTitle>
-                    <CardDescription className="mb-6 text-base text-gray-500">
-                      {service.desc}
-                    </CardDescription>
+                <Card className="flex flex-col h-full shadow-lg border-t-4 border-[#29508a] hover:shadow-xl transition-shadow duration-200">
+                  <div className="relative h-48 w-full">
+                    <Image
+                      src={service.img}
+                      alt={service.title}
+                      fill
+                      className="object-cover rounded-t-xl"
+                    />
                   </div>
-                  <a
-                    href="#"
-                    className="inline-block px-6 py-2 rounded-lg font-semibold mt-auto transition-colors duration-200 bg-[#29508a] text-white hover:bg-[#4bb6e6]"
-                  >
-                    Read more
-                  </a>
-                </CardContent>
-              </Card>
+                  <CardContent className="flex-1 flex flex-col justify-between py-6">
+                    <div>
+                      <CardTitle className="text-2xl font-bold mb-2 text-[#22314f]">
+                        {service.title}
+                      </CardTitle>
+                      <CardDescription className="mb-6 text-base text-gray-500">
+                        {service.desc}
+                      </CardDescription>
+                    </div>
+                    <span className="inline-block px-6 py-2 rounded-lg font-semibold mt-auto transition-colors duration-200 bg-[#29508a] text-white hover:bg-[#4bb6e6]">
+                      Read more
+                    </span>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </motion.div>
         </AnimatePresence>
@@ -208,7 +211,7 @@ export default function ServicesPage() {
             BOOK ONLINE WITH US 24/7!
           </span>
           <div className="flex items-center gap-4 mt-4 md:mt-0">
-            <a href="/appointment" className="">
+            <Link href="/appointment">
               <Button
                 variant="outline"
                 size="lg"
@@ -217,9 +220,9 @@ export default function ServicesPage() {
                 <Calendar className="w-6 h-6" />
                 BOOK NOW
               </Button>
-            </a>
+            </Link>
             <span className="text-white font-bold text-lg">or</span>
-            <a href="tel:1234567890">
+            <Link href="tel:1234567890">
               <Button
                 variant="outline"
                 size="lg"
@@ -228,7 +231,7 @@ export default function ServicesPage() {
                 <Phone className="w-6 h-6" />
                 CALL US
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
