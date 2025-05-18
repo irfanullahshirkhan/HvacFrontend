@@ -9,5 +9,15 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
     env_file:
       - .env.local
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
