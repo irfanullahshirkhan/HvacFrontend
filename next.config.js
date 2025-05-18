@@ -19,7 +19,9 @@ const nextConfig = {
       },
     },
     // Enable other performance optimizations
-    optimizeCss: true,
+    optimizeCss: {
+      inlineThreshold: 0,
+    },
     optimizePackageImports: ['@mui/icons-material', '@mui/material', '@emotion/styled', '@emotion/react'],
   },
   // Production optimizations
@@ -27,6 +29,23 @@ const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   compress: true,
+  // Add output configuration
+  output: 'export',
+  // Add build configuration
+  distDir: '.next',
+  // Add page extensions
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
+  // Add webpack configuration
+  webpack: (config, { isServer }) => {
+    // Add any webpack customizations here
+    return config;
+  },
+  // Add trailing slashes to all routes
+  trailingSlash: true,
+  // Disable image optimization during export
+  images: {
+    unoptimized: true,
+  },
 }
 
 module.exports = nextConfig
